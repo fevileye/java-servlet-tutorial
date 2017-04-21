@@ -1,0 +1,39 @@
+package com.mitrais.booksexample;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
+@ManagedBean
+@SessionScoped
+public class SimpleCrudBean implements Serializable {
+	private static final long serialVersionID= 1L;
+	
+	private List<Books> list;
+	private Books book=new Books();
+	private Books beforeEditBook = null;
+	
+	@PostConstruct
+	public void init(){
+		list=new ArrayList<Books>();
+	}
+	
+	public void add(){
+		book.setId(list.isEmpty()? 1:list.get(list.size()-1).getId()+1);
+		list.add(book);
+		book=new Books();
+	}
+	
+	public void resetAdd(){
+		book= new Books();
+	}
+	
+	public void edit(Books book){
+		beforeEditBook= book.clone();
+		this.book=book;
+	}
+}

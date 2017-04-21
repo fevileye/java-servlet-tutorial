@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+
+      xmlns:f="http://java.sun.com/jsf/core"
+
+      xmlns:h="http://java.sun.com/jsf/html">
+<head>
+    <title>Simple CRUD</title>
+</head>
+    
+<body>
+    <h3>List students</h3>
+    <h:form rendered="#{not empty simpleCrudBean.list}">
+        <h:dataTable value="#{simpleCrudBean.list}" var="book">
+             <h:column><f:facet name="header">ID</f:facet>#{book.id}</h:column>
+             <h:column><f:facet name="header">ISBN</f:facet>#{book.isbn}</h:column>
+             <h:column><f:facet name="header">Title</f:facet>#{book.title}</h:column>
+             <h:column><f:facet name="header">Author</f:facet>#{book.author}</h:column>
+             <h:column><f:facet name="header">Publisher</f:facet>#{book.publisher}</h:column>
+             <h:column><f:facet name="header">Price</f:facet>#{book.price}</h:column>
+            
+            <h:column>
+                <h:commandButton value="edit" action="#{simpleCrudBean.edit(book)}" />
+            </h:column>
+            <h:column>
+                <h:commandButton value="delete" action="#{simpleCrudBean.delete(book)}" />
+            </h:column>
+        </h:dataTable>
+    </h:form>
+    
+  
+        <p rendered="#{empty simpleCrudBean.list}">No students! Please add students.</p>
+  
+    
+    <h:panelGroup rendered="#{!simpleCrudBean.edit}">
+        <h3>Add student</h3>
+        <h:form>
+            <p>ISBN: <h:inputText value="#{simpleCrudBean.book.isbn}" /></p>
+            <p>Title: <h:inputText value="#{simpleCrudBean.book.title}" /></p>
+            <p>Author: <h:inputText value="#{simpleCrudBean.book.author}" /></p>
+            <p>Publisher: <h:inputText value="#{simpleCrudBean.book.publisher}" /></p>
+            <p>Price: <h:inputText value="#{simpleCrudBean.book.price}" /></p>
+            <p>
+                <h:commandButton value="add" action="#{simpleCrudBean.add}" />
+                <h:commandButton value="reset" action="#{simpleCrudBean.resetAdd}" />
+            </p>
+        </h:form>
+    </h:panelGroup>
+    
+    <h:panelGroup rendered="#{simpleCrudBean.status}">
+    	<p>Berhasil</p>
+    </h:panelGroup>
+    
+    <h:panelGroup rendered="#{simpleCrudBean.edit}">
+        <h3>Edit student #{simpleCrudBean.book.id}</h3>
+        <h:form>
+            <p>ISBN: <h:inputText value="#{simpleCrudBean.book.isbn}" /></p>
+            <p>Title: <h:inputText value="#{simpleCrudBean.book.title}" /></p>
+            <p>Author: <h:inputText value="#{simpleCrudBean.book.author}" /></p>
+            <p>Publisher: <h:inputText value="#{simpleCrudBean.book.publisher}" /></p>
+            <p>Price: <h:inputText value="#{simpleCrudBean.book.price}" /></p>
+            <p>
+                <h:commandButton value="save" action="#{simpleCrudBean.saveEdit}" />
+                <h:commandButton value="cancel" action="#{simpleCrudBean.cancelEdit}" />
+            </p>
+        </h:form>
+    </h:panelGroup>
+    <p>
+        <a href="#{appUrlStore.baseUrl}">Go back to index</a>
+    </p>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Welcome Page</title>
+</head>
+<body>
+	<p>Add Student</p>
+	
+	<form action="Servlet" >
+		<label> Name : </label> <input name="Nama"/>
+		<input type="submit"/>
+	</form>
+	
+	<href="/SampleServlet/Servlet">
+
+</body>
+</html>

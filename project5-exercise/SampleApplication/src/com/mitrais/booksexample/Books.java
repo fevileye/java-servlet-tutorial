@@ -1,0 +1,75 @@
+package com.mitrais.booksexample;
+
+
+public class Books {
+	private int id;
+	private String title;
+	private String isbn;
+	private String author;
+	private String publisher;
+	private String price;
+
+	Books(){};
+	
+	Books(int id, String title, String isbn, String author, String publisher, String Price){
+		this.id=id;
+		this.title=title;
+		this.isbn=isbn;
+		this.author=author;
+		this.publisher=publisher;
+		this.price=Price;
+		
+	}
+	
+	@Override
+	public Books clone(){
+		return new Books(id,title,isbn,author,publisher,price);
+	}
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getIsbn() {
+		return isbn;
+	}
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+	public String getAuthor() {
+		return author;
+	}
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+	public String getPublisher() {
+		return publisher;
+	}
+	public void setPublisher(String publisher) {
+		this.publisher = publisher;
+	}
+	public String getPrice() {
+		return price;
+	}
+	public void setPrice(String price) {
+		this.price = price;
+	}
+	
+	public void restore(Books book){
+		this.id=book.getId();
+		this.title=book.getTitle();
+		this.isbn=book.getIsbn();
+		this.author=book.getAuthor();
+		this.publisher=book.getPublisher();
+		this.price=book.getPrice();
+	}
+	
+}
